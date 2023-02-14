@@ -13,6 +13,7 @@
   display: flex;
   align-items: center;
   column-gap: 8px;
+  cursor: pointer;
 }
 .logo img {
   width: 1.5rem;
@@ -52,7 +53,7 @@
   right: -35%;
   width: 13px;
   height: 15px;
-  content: "";
+  content: '';
   background: var(--primary-color);
   color: #fff;
   display: flex;

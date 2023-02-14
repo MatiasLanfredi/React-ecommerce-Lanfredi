@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Container, Row } from 'reactstrap';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
@@ -22,6 +22,8 @@ const Header = () => {
 
   const menuRef = useRef(null);
 
+  const navigate = useNavigate();
+
   const stickyHeaderFunc = () => {
     window.addEventListener('scroll', () => {
       if (
@@ -42,12 +44,18 @@ const Header = () => {
   const menuToggle = () => {
     menuRef.current.classList.toggle('active__menu');
   };
+  const NavigateToCart = () => {
+    navigate('/cart');
+  };
+  const NavigateToHome = () => {
+    navigate('/');
+  };
   return (
     <header className="header" ref={headerRef}>
       <Container>
         <Row>
           <div className="nav__wrapper">
-            <div className="logo">
+            <div onClick={NavigateToHome} className="logo">
               <img src={logo} alt="logo" />
               <div>
                 <h1>Incube</h1>
@@ -74,7 +82,7 @@ const Header = () => {
                 <i className="ri-heart-line"></i>
                 <span className="badge">1</span>
               </span>
-              <span className="cart__icon">
+              <span className="cart__icon" onClick={NavigateToCart}>
                 <i className="ri-shopping-bag-line"></i>
                 <span className="badge">{totalQuantity}</span>
               </span>
